@@ -98,6 +98,12 @@ export default withMermaid({
     build: {
       assetsInlineLimit: (filePath) => (imageMime(filePath) === undefined ? undefined : false),
     },
+    optimizeDeps: {
+      // mermaid is only imported behind a <ClientOnly> component, so Vite's
+      // dependency scanner never discovers it and its CJS deps (e.g. fastdom)
+      // get served unbundled, which breaks on their missing default export.
+      include: ['mermaid'],
+    },
     server: {
       allowedHosts: true,
     },
