@@ -255,6 +255,13 @@ export default withMermaid({
               { text: 'Licenses', link: '/docs/about/licenses' },
             ],
           },
+          {
+            text: 'Blog',
+            collapsed: true,
+            items: [
+              { text: 'Release 1.2.0', link: '/blog/release-1.2.0/' },
+            ],
+          },
         ],
       },
 
