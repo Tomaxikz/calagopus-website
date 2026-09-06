@@ -232,6 +232,7 @@ export default withMermaid({
         ],
       },
       { text: 'Releases', link: '/docs/releases/' },
+      { text: 'Blog', link: '/blog/' },
       { text: 'Documentation', link: '/docs' },
     ],
 
@@ -257,8 +258,9 @@ export default withMermaid({
           },
           {
             text: 'Blog',
+            link: '/blog/',
             collapsed: true,
-            items: [{ text: 'Release 1.2.0', link: '/blog/release-1.2.0/' }],
+            items: [{ text: 'Calagopus 1.2.0 released', link: '/blog/release-1.2.0' }],
           },
         ],
       },
@@ -667,6 +669,26 @@ export default withMermaid({
     if (pageData.lastUpdated) {
       const modified = new Date(pageData.lastUpdated).toISOString();
       pageData.frontmatter.head.push(['meta', { property: 'article:modified_time', content: modified }]);
+
+      if (pageData.relativePath.startsWith('blog/') && pageData.frontmatter.date) {
+        pageData.frontmatter.head.push([
+          'script',
+          { type: 'application/ld+json' },
+          JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            '@id': `${canonicalUrl}#article`,
+            headline: pageData.title,
+            description: pageData.description || undefined,
+            url: canonicalUrl,
+            datePublished: new Date(pageData.frontmatter.date).toISOString(),
+            dateModified: modified,
+            isPartOf: { '@id': `${SITE_URL}/#website` },
+            author: { '@id': `${SITE_URL}/#organization` },
+            publisher: { '@id': `${SITE_URL}/#organization` },
+          }),
+        ]);
+      }
 
       if (pageData.relativePath.startsWith('docs/')) {
         pageData.frontmatter.head.push([
