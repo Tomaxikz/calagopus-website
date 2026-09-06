@@ -20,6 +20,12 @@ The server speaks streamable HTTP, which is what most clients use for remote ser
 claude mcp add --transport http calagopus https://calagopus.com/mcp
 ```
 
+=== ChatGPT Codex
+
+```bash
+codex mcp add calagopus --url https://calagopus.com/mcp
+```
+
 === JSON configuration
 
 Clients configured through a JSON file usually want an entry along these lines. The exact key names differ between clients, so check yours if it rejects the block:
