@@ -13,6 +13,8 @@
       "/docs/*",
       "/compare",
       "/compare/*",
+      "/blog",
+      "/blog/*",
       "/ai-doc/*",
       "/*.md",
       "/mcp",

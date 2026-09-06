@@ -258,9 +258,7 @@ export default withMermaid({
           {
             text: 'Blog',
             collapsed: true,
-            items: [
-              { text: 'Release 1.2.0', link: '/blog/release-1.2.0/' },
-            ],
+            items: [{ text: 'Release 1.2.0', link: '/blog/release-1.2.0/' }],
           },
         ],
       },
